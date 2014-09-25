@@ -43,10 +43,11 @@ var todoApp = angular.module('todoApp', ['$scope', function($scope)
 
 var categoriesController = todoApp.controller('CategoriesController', ['$scope', function($scope)
 {
+  $scope.resourceMap.initializeCategories($scope.categories);
   
   $scope.selectCategory = function()
   {
-    $scope.resourceMap.SelectedCategory($scope.selectedCategory, $scope.todos);
+    $scope.resourceMap.selectedCategory($scope.selectedCategory, $scope.todos);
     // TODO: Filter category list
   }
 

@@ -33,13 +33,23 @@ var ResourceMap = function(url)
           // or ... go into "offline mode" 
         });
 
-  this.categoryList = function()
+  this.selectedCategory = function(selectedCategory, todos)
+  {
+    var categoryList = this.categoryList;
+    categoryList.
+  }
+
+  this.initializeCategories = function(categories)
   {
     var categoryList = CategoryList();
     this.resourceMaps.map(function(resourceMap)
     {
       resourceMap.categoryListData(function(data, status, headers, config) {
         categoryList.load(data, status, headers, config);
+        categoryList.categories().map(category)
+        {
+          // merge categories
+        };
       });
     });
     return categoryList;

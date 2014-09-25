@@ -1,7 +1,5 @@
 var TodoList = function () {
 
-    this.name = '';
-
     this.todos = [
       {text:'learn angular', done:true},
       {text:'build an angular app', done:false}];

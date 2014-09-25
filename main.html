@@ -2,13 +2,29 @@
 <html ng-app="todoApp">
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.3/angular.min.js"></script>
-    <script src="Categories.js"></script>
+    <script src="CategoryList.js"></script>
+    <script src="parsers/ResourceMap.js"></script>
     <script src="todoApp.js"></script>
     <link rel="stylesheet" href="todo.css">
   </head>
   <body>
+
+    <h2>Categories</h2>
+    <div ng-controller="CategoriesController">
+      <ul class="unstyled">
+        <li ng-repeat="category in categories">
+          <span class="done-{{todo.done}}">{{category.name}}</span>
+        </li>
+      </ul>
+      <form ng-submit="addTodo()">
+        <input type="text" ng-model="categoryText"  size="30"
+               placeholder="add new category here">
+        <input class="btn-primary" type="submit" value="add">
+      </form>
+    </div>
+
     <h2>Todo</h2>
-    <div ng-controller="TodoController">
+    <div ng-controller="TodosController">
       <span>{{remaining()}} of {{todoList.todos.length}} remaining</span>
       [ <a href="" ng-click="archive()">archive</a> ]
       <ul class="unstyled">

@@ -1,6 +1,10 @@
-var todoApp = angular.module('todoApp', ['$scope', function($scope)
+var todoApp = angular.module('todoApp', []);
+todoApp.run(function($rootScope, $http) {
+  $rootScope.resourceMap = ResourceMap($http, '../restfest-listomatic-schema/resourcemap.example.html');
+});
+
+var categoriesController = todoApp.controller('CategoriesController', function($scope, $rootScope)
 {
-  $scope.resourceMap = ResourceMap('../restfest-listomatic-schema/resourcemap.example.html');
   $scope.categories = [
   {
       name: 'Test 1',
@@ -21,29 +25,7 @@ var todoApp = angular.module('todoApp', ['$scope', function($scope)
       errorMessage: null
     }];
 
-  $scope.todos = [
-    {
-      name: 'Test todo',
-      id: '',
-      categoryId: 'test1',
-      synched: false,
-      errorMessage: null,
-      complete: false
-    },
-    {
-      name: 'Test cat 2',
-      id: '',
-      categoryId: 'test2'
-      synched: true,
-      errorMessage: null,
-      complete: true
-    }
-  ];
-}]);
-
-var categoriesController = todoApp.controller('CategoriesController', ['$scope', function($scope)
-{
-  $scope.resourceMap.initializeCategories($scope.categories);
+  $rootScope.resourceMap.initializeCategories($scope.categories);
   
   $scope.selectCategory = function()
   {
@@ -76,11 +58,31 @@ var categoriesController = todoApp.controller('CategoriesController', ['$scope',
 
   };
 
-}]); // End categories controller
+}); // End categories controller
 
 
 var todoController = todoApp.controller('TodosController', ['$scope', function($scope)
 {
+  $scope.todos = [
+    {
+      name: 'Test todo',
+      id: '',
+      categoryId: 'test1',
+      synched: false,
+      errorMessage: null,
+      complete: false
+    },
+    {
+      name: 'Test cat 2',
+      id: '',
+      categoryId: 'test2',
+      synched: true,
+      errorMessage: null,
+      complete: true
+    }
+  ];
+
+
   $scope.remaining = function() {
     var count = 0;
     angular.forEach($scope.todos, function(todo) {
@@ -93,7 +95,7 @@ var todoController = todoApp.controller('TodosController', ['$scope', function($
     var newTodo = {
       name: $scope.todoText,
       id: '',
-      categoryId: $scope.selectedCategory.id;
+      categoryId: $rootScope.selectedCategory.id,
       synched: false,
       errorMessage: null,
       complete: false

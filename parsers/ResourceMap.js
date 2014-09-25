@@ -1,8 +1,8 @@
-var ResourceMap = function(url)
+var ResourceMap = function(http, url)
 {
 	this.resourceMaps = [];
 
-	$http({method: 'GET', url: url}).
+	http({method: 'GET', url: url}).
         success(function(data, status, headers, config) {
 
           // try to parse with ALPS
@@ -33,10 +33,11 @@ var ResourceMap = function(url)
           // or ... go into "offline mode" 
         });
 
+
+
   this.selectedCategory = function(selectedCategory, todos)
   {
-    var categoryList = this.categoryList;
-    categoryList.
+    
   }
 
   this.initializeCategories = function(categories)

@@ -1,8 +1,4 @@
-var ResourceMapRDFa = function()
+var ResourceMapRDFa = function(data, status, headers, config)
 {
-	this.tryParse = function(data, status, headers, config) {
-		// TODO: Parse some RDFa stuffs
-	}
-
-	return this;
+	return null;
 }

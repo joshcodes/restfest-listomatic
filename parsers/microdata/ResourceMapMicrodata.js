@@ -1,10 +1,11 @@
-var ResourceMapMicrodata = function()
+var ResourceMapMicrodata = function(data, status, headers, config)
 {
-    this.todoListUrl = null;
-    this.loginUrl = null;
+    this.categoriesQueryData = null;
+    this.loginData = null;
 
-	this.tryParse = function(data, status, headers, config) {
-		
+	this.categoriesQueryData = function() {
+		return this.categoriesQueryData;
 	}
+
 	return this;
 }

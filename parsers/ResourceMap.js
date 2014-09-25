@@ -33,19 +33,20 @@ var ResourceMap = function(url)
           // or ... go into "offline mode" 
         });
 
-    this.todoListsQueryObj = null;
-    this.todoListsQuery = function()
-    {
-    	this.resourceMaps.map(function(resourceMap) {
-    		var todoListsQueryData = resourceMap.todoListsQueryData());
-    		if(todoListsQueryData != null)
-    		{
-    			this.todoListsQueryObj = TodoListsQuery(todoListsQueryData);
-    			return this.todoListsQueryObj;
-    		}
-    	});
-    	return null;
-    }
+  this.categoriesQueryObj = null;
+  this.categoriesQuery = function()
+  {
+    this.resourceMaps.map(function(resourceMap) {
+      var categoriesQueryData = resourceMap.categoriesQueryData();
+      if(categoriesQueryData != null)
+      {
+        this.categoriesQueryObj = CategoriesQuery(categoriesQueryData);
+        return this.categoriesQueryObj;
+      }
+    });
+
+    return null;
+  }
 
 	return this;
 }

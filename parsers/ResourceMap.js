@@ -33,19 +33,16 @@ var ResourceMap = function(url)
           // or ... go into "offline mode" 
         });
 
-  this.categoriesQueryObj = null;
-  this.categoriesQuery = function()
+  this.categoryList = function()
   {
-    this.resourceMaps.map(function(resourceMap) {
-      var categoriesQueryData = resourceMap.categoriesQueryData();
-      if(categoriesQueryData != null)
-      {
-        this.categoriesQueryObj = CategoriesQuery(categoriesQueryData);
-        return this.categoriesQueryObj;
-      }
+    var categoryList = CategoryList();
+    this.resourceMaps.map(function(resourceMap)
+    {
+      resourceMap.categoryListData(function(data, status, headers, config) {
+        categoryList.load(data, status, headers, config);
+      });
     });
-
-    return null;
+    return categoryList;
   }
 
 	return this;

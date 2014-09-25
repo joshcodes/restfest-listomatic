@@ -6,10 +6,10 @@ var todoApp = angular.module('todoApp', ['$scope', function($scope)
 var categoriesController = todoApp.controller('CategoriesController', ['$scope', function($scope)
 {
 
-  $scope.categories = $scope.resourceMap.Categories();
+  $scope.categoryList = $scope.resourceMap.categoryList();
 
   $scope.addCategory = function() {
-    $scope.categories.addTodo($scope.categoryText,
+    $scope.categoryList.addCategory($scope.categoryText,
       function()
       {
         $scope.categoryText = '';
